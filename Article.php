@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Modules\Core;
 
 use App\Traits\NPerGroup;
 use Illuminate\Database\Eloquent\Model;
