@@ -19,12 +19,12 @@ class ArticleRoom extends Model
 
     public function article()
     {
-        return $this->hasOne('App\Article', 'id', 'article_id');
+        return $this->hasOne('App\Modules\Core\Article', 'id', 'article_id');
     }
 
     public function messages()
     {
-        return $this->hasMany('App\RoomMessage', 'room_id');
+        return $this->hasMany('App\Modules\Core\RoomMessage', 'room_id');
     }
 
     public function scopeWithMessagesAndUser($query)

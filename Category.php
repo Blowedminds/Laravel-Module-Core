@@ -29,17 +29,17 @@ class Category extends Model
 
     public function articles()
     {
-      return $this->belongsToMany('App\Article', 'article_categories');
+      return $this->belongsToMany('App\Modules\Core\Article', 'article_categories');
     }
 
   /*  public function articleCategories()
     {
-      return $this->hasMany('App\ArticleCategory');
+      return $this->hasMany('App\Modules\Core\ArticleCategory');
     }*/
 
     public function articleContents()
     {
-      return $this->hasManyThrough('App\ArticleContent', 'App\ArticleCategory', 'category_id', 'article_id', 'id', 'article_id');
+      return $this->hasManyThrough('App\Modules\Core\ArticleContent', 'App\Modules\Core\ArticleCategory', 'category_id', 'article_id', 'id', 'article_id');
     }
 
     public function scopeSlug($query, $slug)

@@ -35,12 +35,12 @@ class ArticleContent extends Model
 
     public function article()
     {
-      return $this->belongsTo('App\Article');
+      return $this->belongsTo('App\Modules\Core\Article');
     }
 
     public function language()
     {
-        return $this->belongsTo('App\Language');
+        return $this->belongsTo('App\Modules\Core\Language');
     }
     
     public function scopePublished($query)

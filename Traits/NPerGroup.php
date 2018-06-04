@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Traits;
+namespace App\Modules\Core\Traits;
 
 
 trait NPerGroup

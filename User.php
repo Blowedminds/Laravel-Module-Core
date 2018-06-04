@@ -71,12 +71,12 @@ class User extends Authenticatable implements JWTSubject
 
     public function userData()
     {
-      return $this->hasOne('App\UserData', 'user_id', 'user_id');
+      return $this->hasOne('App\Modules\Core\UserData', 'user_id', 'user_id');
     }
 
     public function articles()
     {
-      return $this->belongsToMany('App\Article', 'article_permissions', 'user_id', 'article_id');
+      return $this->belongsToMany('App\Modules\Core\Article', 'article_permissions', 'user_id', 'article_id');
     }
 
     public function trashedArticles()
@@ -87,12 +87,12 @@ class User extends Authenticatable implements JWTSubject
     //Deprecated
     public function roles()
     {
-      return $this->belongsToMany('App\Role', 'user_datas', 'user_id', 'role_id');
+      return $this->belongsToMany('App\Modules\Core\Role', 'user_datas', 'user_id', 'role_id');
     }
 
     public function rolesByRoleId($role_id)
     {
-      return $this->belongsToMany('App\Role', 'user_datas', 'user_id', 'role_id')->wherePivot('role_id', $role_id);
+      return $this->belongsToMany('App\Modules\Core\Role', 'user_datas', 'user_id', 'role_id')->wherePivot('role_id', $role_id);
     }
 
     public function menusByRole()

@@ -19,12 +19,12 @@ class RoomMessage extends Model
 
     public function room()
     {
-        return $this->hasOne('App\ArticleRoom', 'id', 'room_id');
+        return $this->hasOne('App\Modules\Core\ArticleRoom', 'id', 'room_id');
     }
 
     public function user()
     {
-        return $this->hasOne('App\User', 'user_id', 'user_id');
+        return $this->hasOne('App\Modules\Core\User', 'user_id', 'user_id');
     }
 
     public function scopeWithUser($query)

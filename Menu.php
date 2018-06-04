@@ -22,6 +22,6 @@ class Menu extends Model
 
     public function menuRoles()
     {
-      return $this->hasMany('App\MenuRole');
+      return $this->hasMany('App\Modules\Core\MenuRole');
     }
 }

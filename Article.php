@@ -2,7 +2,7 @@
 
 namespace App\Modules\Core;
 
-use App\Traits\NPerGroup;
+use App\Modules\Core\Traits\NPerGroup;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -29,72 +29,72 @@ class Article extends Model
 
     public function languages()
     {
-        return $this->belongsToMany('App\Language', 'article_contents', 'article_id', 'language_id');
+        return $this->belongsToMany('App\Module\CoresLanguage', 'article_contents', 'article_id', 'language_id');
     }
 
     public function availableLanguages($published = 1)
     {
-        return $this->belongsToMany('App\Language', 'article_contents', 'article_id', 'language_id')->wherePivot('published', $published);
+        return $this->belongsToMany('App\Module\CoresLanguage', 'article_contents', 'article_id', 'language_id')->wherePivot('published', $published);
     }
 
     public function categories()
     {
-        return $this->belongsToMany('App\Category', 'article_categories');
+        return $this->belongsToMany('App\Module\CoresCategory', 'article_categories');
     }
 
     public function article_categories()
     {
-        return $this->hasMany('App\ArticleCategory');
+        return $this->hasMany('App\Module\CoresArticleCategory');
     }
 
     public function users()
     {
-        return $this->belongsToMany('App\User', 'article_permissions', 'article_id', 'user_id');
+        return $this->belongsToMany('App\Module\CoresUser', 'article_permissions', 'article_id', 'user_id');
     }
 
     public function permissions()
     {
-        return $this->hasMany('App\ArticlePermission');
+        return $this->hasMany('App\Module\CoresArticlePermission');
     }
 
     public function contents()
     {
-        return $this->hasMany('App\ArticleContent');
+        return $this->hasMany('App\Module\CoresArticleContent');
     }
 
     public function content()
     {
-        return $this->hasOne('App\ArticleContent');
+        return $this->hasOne('App\Module\CoresArticleContent');
     }
 
     public function author()
     {
-        return $this->belongsTo('App\User', 'author_id', 'user_id');
+        return $this->belongsTo('App\Module\CoresUser', 'author_id', 'user_id');
     }
 
     public function olds()
     {
-        return $this->hasMany('App\ArticleArchive', 'article_id', 'id');
+        return $this->hasMany('App\Module\CoresArticleArchive', 'article_id', 'id');
     }
 
     public function contentByLanguage($language)
     {
-        return $this->hasOne('App\\ArticleContent')->where('language_id', $language);
+        return $this->hasOne('App\Module\Cores\ArticleContent')->where('language_id', $language);
     }
 
     public function trashed_categories()
     {
-        return $this->hasMany('App\ArticleCategory')->onlyTrashed();
+        return $this->hasMany('App\Module\CoresArticleCategory')->onlyTrashed();
     }
 
     public function trashed_contents()
     {
-        return $this->hasMany('App\ArticleContent', 'article_id', 'id')->onlyTrashed();
+        return $this->hasMany('App\Module\CoresArticleContent', 'article_id', 'id')->onlyTrashed();
     }
 
     public function room()
     {
-        return $this->hasOne('App\ArticleRoom');
+        return $this->hasOne('App\Module\CoresArticleRoom');
     }
 
     public function createMessage($message)

@@ -24,11 +24,11 @@ class Role extends Model
 
     public function menus()
     {
-      return $this->belongsToMany('App\Menu', 'menu_roles');
+      return $this->belongsToMany('App\Modules\Core\Menu', 'menu_roles');
     }
 
     public function users()
     {
-      return $this->belongsToMany('App\User', 'user_datas', 'role_id', 'user_id');
+      return $this->belongsToMany('App\Modules\Core\User', 'user_datas', 'role_id', 'user_id');
     }
 }
