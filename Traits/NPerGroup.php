@@ -6,7 +6,7 @@ namespace App\Modules\Core\Traits;
 
 trait NPerGroup
 {
-    public function scopeNPerGroup($query, $relatedTable = NULL, $group, $n = 10) {
+    public function scopeNPerGroup($query, $relatedTable = NULL, $group, $n = 10, $withDeleted = false) {
         // queried table
         $table = ($this->getTable());
         $newQuery = $this->newQueryWithoutScopes();
@@ -16,6 +16,10 @@ trait NPerGroup
         // if no columns already selected, let's select *
         if (!$query->getQuery()->columns) {
             $newQuery->select("{$table}.*");
+        }
+
+        if(!$withDeleted) {
+            $newQuery->whereNull("{$table}.deleted_at");
         }
         // make sure column aliases are unique
         $groupAlias = "{$table}_grp";//. md5(time());
