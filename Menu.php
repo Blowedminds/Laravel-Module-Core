@@ -16,7 +16,9 @@ class Menu extends Model
      */
     protected $dates = ['deleted_at'];
 
-    protected $casts = [ 'id' => 'integer', 'menu_weight' => 'integer', 'menu_parent' => 'integer' ];
+    protected $casts = [
+        'id' => 'integer', 'menu_weight' => 'integer', 'menu_parent' => 'integer', 'name' => 'array', 'tooltip' => 'array'
+    ];
 
     protected $guarded = [];
 
