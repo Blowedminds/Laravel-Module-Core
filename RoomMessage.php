@@ -10,7 +10,7 @@ class RoomMessage extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'room_id', 'user_id', 'message'
+        'room_id', 'user_id', 'message', 'text'
     ];
 
     protected $hidden = [
