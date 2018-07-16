@@ -5,9 +5,12 @@ namespace App\Modules\Core;
 use App\Modules\Core\Traits\NPerGroup;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\ModelTraits\ArticleTrait;
 
 class Article extends Model
 {
+
+    use ArticleTrait;
     use SoftDeletes;
     use NPerGroup;
     /**
