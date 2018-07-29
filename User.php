@@ -95,6 +95,11 @@ class User extends Authenticatable implements JWTSubject
       return $this->belongsToMany('App\Modules\Core\Role', 'user_datas', 'user_id', 'role_id')->wherePivot('role_id', $role_id);
     }
 
+    public function permission($permission)
+    {
+        return $this->roles[0]->permissions()->where('slug', $permission);
+    }
+
     public function menusByRole()
     {
       $roles = $this->roles;

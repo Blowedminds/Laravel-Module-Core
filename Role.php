@@ -34,6 +34,6 @@ class Role extends Model
 
     public function permissions()
     {
-        return $this->hasManyThrough('App\Modules\Core\Permission', 'role_permissions');
+        return $this->belongsToMany('App\Modules\Core\Permission', 'role_permissions');
     }
 }
