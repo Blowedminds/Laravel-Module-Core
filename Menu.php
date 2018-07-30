@@ -22,8 +22,8 @@ class Menu extends Model
 
     protected $guarded = [];
 
-    public function menuRoles()
+    public function menuPermissions()
     {
-      return $this->hasMany('App\Modules\Core\MenuRole');
+      return $this->hasMany('App\Modules\Core\MenuPermission');
     }
 }

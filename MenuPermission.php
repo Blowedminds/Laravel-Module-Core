@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 
-class MenuRole extends Model
+class MenuPermission extends Model
 {
   use SoftDeletes;
 
@@ -15,7 +15,7 @@ class MenuRole extends Model
      *
      * @var array
      */
-     protected $casts = [ 'id' => 'integer', 'menu_id' => 'integer', 'role_id' => 'integer' ];
+     protected $casts = [ 'id' => 'integer', 'menu_id' => 'integer', 'permission_id' => 'integer' ];
 
      protected $fillable = [
        'menu_id', 'role_id'

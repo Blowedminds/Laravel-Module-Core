@@ -12,4 +12,9 @@ class Permission extends Model
     {
         return $this->hasManyThrough('App\Modules\Core\Role', 'role_permissions');
     }
+
+    public function menus()
+    {
+        return $this->belongsToMany('App\Modules\Core\Menu', 'menu_permissions');
+    }
 }
