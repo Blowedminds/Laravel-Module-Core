@@ -84,6 +84,11 @@ class User extends Authenticatable implements JWTSubject
       return $this->articles()->onlyTrashed();
     }
 
+    public function images()
+    {
+        return $this->hasMany('App\\Modules\\Image\Image', 'owner', 'user_id');
+    }
+
     //Deprecated
     public function roles()
     {
