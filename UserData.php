@@ -14,6 +14,8 @@ class UserData extends Model
      *
      * @var array
      */
+    protected $table = 'user_datas';
+
     protected $dates = ['deleted_at'];
 
     protected $casts = [
