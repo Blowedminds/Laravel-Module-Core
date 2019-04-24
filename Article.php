@@ -9,8 +9,6 @@ use App\ModelTraits\ArticleTrait;
 
 class Article extends Model
 {
-
-    use ArticleTrait;
     use SoftDeletes;
     use NPerGroup;
     /**
