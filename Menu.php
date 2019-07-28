@@ -26,4 +26,9 @@ class Menu extends Model
     {
       return $this->hasMany('App\Modules\Core\MenuRole');
     }
+
+    public function roles()
+    {
+        return $this->belongsToMany('App\\Modules\\Core\\Role', 'menu_roles');
+    }
 }
