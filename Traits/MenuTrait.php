@@ -10,10 +10,15 @@ trait MenuTrait
 {
     public function getMenus($locale)
     {
+        return $this->getRoleMenus($locale, 'guest');
+    }
+
+    public function getRoleMenus($locale, $role_slug)
+    {
         $language_slug = $locale;
 
-        $menus = Menu::whereHas('roles', function ($q) {
-            $q->where('slug', 'guest');
+        $menus = Menu::whereHas('roles', function ($q) use ($role_slug) {
+            $q->where('slug', $role_slug);
         })
             ->orderBy('weight', 'DESC')
             ->get()
@@ -29,6 +34,11 @@ trait MenuTrait
                 ];
             })->toArray();
 
+        return $this->putChildrenIntoParents($menus);
+    }
+
+    public function putChildrenIntoParents($menus)
+    {
         for ($i = 0, $count = count($menus); $i < $count; $i++) {
 
             $menu = array_pop($menus);
