@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class UserData extends Model
 {
-  use SoftDeletes;
+    use SoftDeletes;
 
     /**
      * The attributes that should be mutated to dates.
@@ -25,6 +25,11 @@ class UserData extends Model
     ];
 
     protected $fillable = [
-      'user_id', 'name', 'role_id', 'profile_image', 'biography'
+        'user_id', 'name', 'role_id', 'profile_image', 'biography'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\\Modules\\Core\\User', 'user_id', 'user_id');
+    }
 }

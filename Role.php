@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Role extends Model
 {
-  use SoftDeletes;
-
     /**
      * The attributes that should be mutated to dates.
      *
@@ -17,8 +15,6 @@ class Role extends Model
      */
 
     protected $casts = [ 'id' => 'integer' ];
-
-    protected $dates = ['deleted_at'];
 
     protected $guarded = [];
 
