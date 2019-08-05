@@ -111,9 +111,9 @@ class User extends Authenticatable implements JWTSubject
 
       $menus = []; $i = 0;
 
-      foreach ($roles as $key => $value) {
+      foreach ($roles as $value) {
 
-        foreach ($value->menus as $key => $val2) {
+        foreach ($value->menus as $val2) {
 
           $menus[$i] = $val2;
 
