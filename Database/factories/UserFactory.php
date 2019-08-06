@@ -1,6 +1,7 @@
 <?php
 
 use App\Modules\Core\User;
+use App\Modules\Core\UserData;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
@@ -17,7 +18,11 @@ use Faker\Generator as Faker;
 
 $factory->define(User::class, function (Faker $faker) {
     return [
-        'user_id' => uniqid('', true),
+        'user_id' => static function() {
+            return factory(UserData::class)->create([
+                'user_id' => uniqid('', false)
+            ])->user_id;
+        },
         'name' => $faker->word,
         'email' => $faker->unique()->safeEmail,
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password

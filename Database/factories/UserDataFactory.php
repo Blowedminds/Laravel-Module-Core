@@ -22,9 +22,7 @@ $factory->define(UserData::class, function (Faker $faker) {
         'user_id' => static function () {
             return factory(User::class)->create()->user_id;
         },
-        'role_id' => static function () {
-            return factory(Role::class)->create()->id;
-        },
+        'role_id' => $faker->numberBetween(1, 100),
         'profile_image' => $faker->slug,
         'biography' => ['sr' => $faker->sentence]
     ];

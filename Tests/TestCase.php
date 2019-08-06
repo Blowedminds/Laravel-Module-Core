@@ -3,6 +3,7 @@
 
 namespace App\Modules\Core\Tests;
 
+use App\Modules\Core\Role;
 use Tests\CreatesApplication;
 use Tests\TestCase as BaseTestCase;
 
