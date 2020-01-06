@@ -26,7 +26,7 @@ class ArticleContent extends Model
     ];
 
     protected $fillable = [
-      'article_id', 'title', 'language_id', 'body', 'sub_title', 'keywords', 'published', 'situation', 'version'
+      'article_id', 'title', 'language_id', 'body', 'sub_title', 'keywords', 'published', 'version'
     ];
 
     protected $hidden = [
@@ -42,7 +42,7 @@ class ArticleContent extends Model
     {
         return $this->belongsTo('App\Modules\Core\Language');
     }
-    
+
     public function scopePublished($query)
     {
         return $query->where('published', 1);
