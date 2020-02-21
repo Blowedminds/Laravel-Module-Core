@@ -153,4 +153,14 @@ class Article extends Model
             $q->withMessagesAndUser();
         }]);
     }
+
+    public function getCategoryAttribute()
+    {
+        $category = count($this->categories) > 0 ? $this->categories[0] : new Category([
+            'name' => '',
+            'slug' => ''
+        ]);
+
+        return $category;
+    }
 }
