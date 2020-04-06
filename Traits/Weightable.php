@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 trait Weightable
 {
-    public function updateWeights(string $table, array $idsAndWeights)
+    public function updateWeights(string $table, array $idsAndWeights, $timestamp = true)
     {
         $cases = [];
         $ids = [];
@@ -32,7 +32,12 @@ trait Weightable
 
         $params[] = Carbon::now();
 
-        DB::update("UPDATE `{$table}` SET `weight` = CASE `id` {$cases} END, `updated_at` = ? WHERE `id` in ({$ids})", $params);
+        if($timestamp) {
+            DB::update("UPDATE `{$table}` SET `weight` = CASE `id` {$cases} END, `updated_at` = ? WHERE `id` in ({$ids})", $params);
+        } else {
+            DB::update("UPDATE `{$table}` SET `weight` = CASE `id` {$cases} END WHERE `id` in ({$ids})", $params);
+        }
+
 
         return response()->json();
     }
