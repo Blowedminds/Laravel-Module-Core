@@ -37,6 +37,6 @@ class SanitizeStrings extends Middleware
             return (new HTMLPurifier($config))->purify($value);
         }
 
-        return is_string($value) ? htmlspecialchars($value, ENT_QUOTES, 'UTF-8') : $value;
+        return is_string($value) ? htmlspecialchars($value, ENT_NOQUOTES, 'UTF-8') : $value;
     }
 }
